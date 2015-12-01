@@ -27,8 +27,8 @@ def save_latest(n, sb=False):
     xlabel("Half light radius (pc)")
     ylabel("$M_V$")
     gca().xaxis.set_major_formatter(FormatStrFormatter("%d"))
-    savefig("lum_radius%02d.png" % n)
-    print "Wroteout lum_radius%02d.png" % n
+    savefig("lum_radius%02d.pdf" % n)
+    print "Wroteout lum_radius%02d.pdf" % n
 
 def draw_sb():
     x = logspace(0,4,30)

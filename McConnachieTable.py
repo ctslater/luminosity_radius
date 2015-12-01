@@ -15,8 +15,8 @@ from astropy.coordinates import SkyCoord, Galactic, Distance
 class McConnachieTable:
     def __init__(self, base_dir="", R_sun=8.0):
         mcconnachie_table  = ascii.read(base_dir + "NearbyGalaxies.dat",
-                                        data_start=30, format='fixed_width',
-                                        header_start=28,delimiter='|')
+                                        data_start=31, format='fixed_width',
+                                        header_start=29,delimiter='|')
         self.names = mcconnachie_table['GalaxyName']
         self.distance_modulus = array(mcconnachie_table['(m-M)'])
         self.Vmag = array(mcconnachie_table['Vmag'])
@@ -60,8 +60,9 @@ class McConnachieTable:
         sel_bad_HI, = where(mcconnachie_table['MHI'] == 99.9)
         self.M_HI[sel_bad_HI] = -999
 
-        f_extend = ascii.read(base_dir + "NearbyGalaxies_extended.dat")
-        self.pre_SDSS = f_extend['PreSDSS'] == 1
+        #f_extend = ascii.read(base_dir + "NearbyGalaxies_extended.dat")
+        #self.pre_SDSS = f_extend['PreSDSS'] == 1
+        self.pre_SDSS = zeros(len(self.RA))
 
 if __name__ == "__main__":
     t = McConnachieTable()
